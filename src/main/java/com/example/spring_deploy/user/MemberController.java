@@ -25,7 +25,10 @@ public class MemberController {
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
-
+    @GetMapping("/health")
+    public String healthCheck() {
+        return "ok";
+    }
     @GetMapping("/db/{username}")
     public String test(@PathVariable String username) {
         Member byUsername = memberRepository.findByUsername(username);
