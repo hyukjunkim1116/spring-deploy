@@ -21,7 +21,6 @@ public class Member {
     public Member(String username) {
         this.username = username;
     }
-
     public void changeImage(String image) {
         this.image = image;
     }

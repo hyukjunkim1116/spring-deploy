@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,7 +42,7 @@ public class MemberController {
         Member save = memberRepository.save(member);
         return save.getUsername();
     }
-
+    @Transactional
     @PostMapping("/s3/{username}")
     public String s3ImageUploadTest(@RequestBody MultipartFile image,@PathVariable String username) throws IOException {
         Member byUsername = memberRepository.findByUsername(username);
